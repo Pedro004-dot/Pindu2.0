@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    /* background-color:#E4E2E2; */
+}
+.content{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 15%;
+}
+.icon{
+    background-color: #E84752;
+    width: 250px;
+    height: 250px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.icon img{
+    width: 20%;
+    margin: 5%;
+}
+.login{
+ margin-left: 15px;
+ display: flex;
+ flex-direction: column;
+}
