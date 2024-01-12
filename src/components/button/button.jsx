@@ -3,11 +3,13 @@ import './button.css'
 
 Button.propTypes = {
   text : PropTypes.string,
+  onClick: PropTypes.func,
+  submit : PropTypes.string
 }
 
-export default function Button({text}){
+export default function Button({text,onClick,submit}){
 
     return(
-        <button >{text}</button>
+        <button type={submit} onClick={onClick}>{text}</button>
     )
 }
