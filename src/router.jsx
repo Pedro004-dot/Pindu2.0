@@ -30,7 +30,9 @@ import PrivateRoute from "./components/privateRoute/privateRoute";
             element:<Consulta/> ,
             component: PrivateRoute,
             
+
          }
+
         
     ]
     )
