@@ -2,14 +2,12 @@
     padding: 0;
     margin: 0;
 }
-.container{
-    /* background-color:#E4E2E2; */
-}
+
 .content{
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-top: 15%;
+   margin-top: 15%; 
 }
 .icon{
     background-color: #E84752;

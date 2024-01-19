@@ -2,6 +2,7 @@
 // import { BrowserRouter, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Macro from "./pages/macro/macro";
+import Micro from "./pages/micro/micro";
 import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./components/privateRoute/privateRoute";
@@ -29,9 +30,17 @@ import PrivateRoute from "./components/privateRoute/privateRoute";
             path:"/consulta",
             element:<Consulta/> ,
             component: PrivateRoute,
-            
+         },
+         {
+            path:"/fazenda/:fazendaId",
+            element:<Micro/> ,
+            component: PrivateRoute,
+         },
 
-         }
+         // {
+         //    path: "/fazenda/:fazendaId", 
+         //    element: <PrivateRoute><Fazenda/></PrivateRoute>,
+         //  },
 
         
     ]
