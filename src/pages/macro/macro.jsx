@@ -1,74 +1,58 @@
-import Header from "../../components/header/header";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-// export default function Macro(){
-//     const location = useLocation();
-//     const formData = location.state?.formData;
-//     useEffect(() => {
-//         if (formData) {
-//            console.log("Dados do formulário:", formData);
-//         }
-//        }, [formData]);   
-    
-
-
 import React from 'react';
 import './macro.css'; 
+import Header from "../../components/header/header";
+import { useNavigate } from 'react-router-dom'
 
 const Macro = () => {
+  const navigate = useNavigate();
   const fazendas = [
-    { nome: 'Fazenda Água Branca I', tamanho: '450 ha', porte: '500',pindu: 'D', status: 'ANALISE PROCESSADA' },
-    { nome: 'Fazenda Roncador', tamanho: '984 ha', porte: '400', pindu:'C',status: 'EM PROCESSAMENTO' },
+    { id: 1, nome: 'Fazenda Água Branca I', tamanho: '450 ha', porte: '500', pindu: 'D', status: 'ANALISE PROCESSADA' },
+    { id: 2, nome: 'Fazenda Roncador', tamanho: '984 ha', porte: '400', pindu: 'C', status: 'EM PROCESSAMENTO' },
+    { id: 3, nome: 'Fazenda Nova Piratininga', tamanho: '984 ha', porte: '1100', pindu: 'C', status: 'EM PROCESSAMENTO' },
+    { id: 4, nome: 'Fazenda São Marcelo', tamanho: '984 ha', porte: '380', pindu: 'B', status: 'EM PROCESSAMENTO' },
   ];
-  const handleRowClick = (fazendaId) => {
-    history.push(`/fazenda/${fazendaId}`);
-  };
-  const getStatusClass = (status) => {
-    switch (status) {
-      case 'EM PROCESSAMENTO':
-        return 'processing';
-      case 'ANALISE PROCESSADA':
-        return 'active';
-      default:
-        return '';
-    }
+  const handleCardClick = (fazendaId) => {
+    navigate(`/fazenda/${fazendaId}`);
   };
 
   return (
     <div>
-     <div className='container'>
-     <Header tela={"Macro"} macro={"Macro"} consulta={"Consulta"}/>
-     </div>
-    <div className="App">
-      <header >
-        <h1>Consulta da Base de Fornecedores</h1>
-      </header>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome da Propriedade</th>
-            <th>Tamanho (ha)</th>
-            <th>Porte</th>
-            <th>Score Pindu</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-        {fazendas.map((fazenda) => (
-        <tr key={fazenda.id} onClick={() => handleRowClick(fazenda.id)}>
-        <td>{fazenda.nome}</td>
-        <td>{fazenda.tamanho}</td>
-        <td>{fazenda.pindu}</td>
-        <td>{fazenda.porte}</td>
-        <td className={getStatusClass(fazenda.status)}>{fazenda.status}</td>
-        </tr>
-        ))}
-    </tbody>
-    </table>
+    <Header tela={"Macro"} macro={"Macro"} consulta={"Consulta"}/>
+    <div className='container-macro'>
+      <h1>Consulta da Base de Fornecedores</h1>
+      <div className="cards-container">
+        {fazendas.map(fazenda => <Card key={fazenda.id} fazenda={fazenda} onCardClick={() => handleCardClick(fazenda.id)} />)}
+      </div>
     </div>
     </div>
-);
+  );
 };
 
-export default Macro
+const Card = ({ fazenda, onCardClick }) => {
+  return (
+    <div className="card" onClick={onCardClick}>
+      <div className="card-header">
+        <span className="fazenda-nome">{fazenda.nome}</span>
+        <span className={`pindu-badge pindu-${fazenda.pindu}`}>{fazenda.pindu}</span>
+      </div>
+      <div className="card-body">
+        <span>Tamanho: {fazenda.tamanho}</span>
+        <span>Porte: {fazenda.porte}</span>
+        <span className={`status-badge ${getStatusClass(fazenda.status)}`}>{fazenda.status}</span>
+      </div>
+    </div>
+  );
+};
+
+const getStatusClass = (status) => {
+  switch (status) {
+    case 'EM PROCESSAMENTO':
+      return 'processing';
+    case 'ANALISE PROCESSADA':
+      return 'processed';
+    default:
+      return '';
+  }
+};
+
+export default Macro;
