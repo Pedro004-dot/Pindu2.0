@@ -5,11 +5,12 @@ import Macro from "./pages/macro/macro";
 import Micro from "./pages/micro/micro";
 import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
-import PrivateRoute from "./components/privateRoute/privateRoute";
+// import PrivateRoute from "./components/privateRoute/privateRoute";
+
 // import RootLayout from "./pages/rootLayout";
 // import ProductBoundary from "./pages/error/ProductBondary";
 
-
+// const isAuthenticated = localStorage.getItem('authenticatedUser');
     const router = createBrowserRouter(
       [
        {
@@ -18,23 +19,14 @@ import PrivateRoute from "./components/privateRoute/privateRoute";
          },{
             path:"/macro",
             element: <Macro/>,
-            component: PrivateRoute,
-           
-            // children:[{
-            //     path:"micro",
-            //     element: <Micro/>,
-            //     errorElement:<ProductBoundary/>,
-            // }]
          },
          {
             path:"/consulta",
             element:<Consulta/> ,
-            component: PrivateRoute,
          },
          {
             path:"/fazenda/:fazendaId",
             element:<Micro/> ,
-            component: PrivateRoute,
          },
 
          // {
@@ -76,3 +68,23 @@ import PrivateRoute from "./components/privateRoute/privateRoute";
 //     </BrowserRouter>
 //  );
 // }
+{/* <PrivateRoute isAuthenticated={isAuthenticated}>
+
+</PrivateRoute> */}
+
+// {
+//   path: "/",
+//   element: <Login/> ,
+// },
+// {
+//   path:"/macro",
+//   element: <PrivateRoute isAuthenticated={isAuthenticated}><Macro/></PrivateRoute>,
+// },
+// {
+//   path:"/consulta",
+//   element:<PrivateRoute isAuthenticated={isAuthenticated}><Consulta/></PrivateRoute> ,
+// },
+// {
+//   path:"/micro",
+//   element:<PrivateRoute isAuthenticated={isAuthenticated}><Micro/></PrivateRoute> ,
+// },

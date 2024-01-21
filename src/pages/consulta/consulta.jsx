@@ -2,24 +2,26 @@ import Button from "../../components/button/button";
 import InputText from "../../components/input-text/inputText";
 import './consulta.css'
 import Header from "../../components/header/header";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Consulta(){
+  
+  
+  const [car,setCar] = useState('')
+  const [machoRebanho,setMachoRebanho] = useState('')
+  const [femeaRebanho,setFemeaRebanho] = useState('')
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-     car: "",
-     macho_rebanho: "",
-     femea_rebanho: "",
-  });
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/macro", { state: { formData } });
- };
-
-
+  function handleSubmit(){
+    const data = {
+      car, machoRebanho, femeaRebanho
+    }
+    
+    console.log(data)
+    navigate('/macro',{ state: { car : car , machoRebanho: machoRebanho}})
+  }
+  
     return(
             <div className='container'>
               <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"}/>
@@ -34,15 +36,19 @@ export default function Consulta(){
                    <br/>
                    <br/>
                    </p>
-                  <form onSubmit={handleSubmit}>
-                   <InputText id='car' type='text' text='CAR' required={true} value={formData.car} onChange={(e) => formData.car(e.target.value)}/>
-                   <InputText id='macho_rebanho' type='number' text='Quantidade de fêmea' required={true}value={formData.macho_rebanho} onChange={(e) => formData.macho_rebanho(e.target.value)}/>
-                   <InputText id='femea_rebanho' type='number' text='Quantidade de macho' required={true} value={formData.femea_rebanho} onChange={(e) => formData.femea_rebanho(e.target.value)}/>
-                   {/* <InputText id='document' type='file' text=''  placeHolder={"DOcumento de venda"} required={false}/> */}
-                   <Button text={'Solicitar Análise'}  />  
-                  </form>
+                 <InputText type={'text'} text={'CAR'} value={car} onChange={e=> setCar(e.target.value)} required={true}/>
+                 <InputText type={'text'} text={'Quantidade de macho'} value={machoRebanho} onChange={e=> setMachoRebanho(e.target.value)} required={true}/>
+                 <InputText type={'text'} text={'Quantidade de femea'} value={femeaRebanho} onChange={e=> setFemeaRebanho(e.target.value)} required={true}/>
+                 <Button onClick={handleSubmit} text={'Solicitar analise'}/>
                 </div>
              </div>   
             </div>           
     )
 }
+{/* <form  >
+<InputText type='text' text='CAR' required={true}  onChange={(e) => setCar(e.target.value)} value={car}/>
+<InputText  name="machoRebanho" type='number' text='Quantidade de fêmea' required={true}  onChange={(e) => setMachoRebanho(e.target.value)} value={machoRebanho}/>
+<InputText  name="femeaRebanho" type='number' text='Quantidade de macho' required={true} onChange={(e) => setFemeaRebanho(e.target.value)} value={femeaRebanho} />
+{/* <InputText id='document' type='file' text=''  placeHolder={"DOcumento de venda"} required={false}/> */}
+{/* <Button onClick={handleSubmit} text={'Solicitar Análise'}  />  
+</form> */} 

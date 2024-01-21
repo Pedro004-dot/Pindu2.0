@@ -1,10 +1,12 @@
-import React from 'react';
 import './macro.css'; 
 import Header from "../../components/header/header";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
+import { useEffect } from 'react';
 
 const Macro = () => {
   const navigate = useNavigate();
+  
+  
   const fazendas = [
     { id: 1, nome: 'Fazenda Água Branca I', tamanho: '450 ha', porte: '500', pindu: 'D', status: 'ANALISE PROCESSADA' },
     { id: 2, nome: 'Fazenda Roncador', tamanho: '984 ha', porte: '400', pindu: 'C', status: 'EM PROCESSAMENTO' },
@@ -15,6 +17,7 @@ const Macro = () => {
     navigate(`/fazenda/${fazendaId}`);
   };
 
+  
   return (
     <div>
     <Header tela={"Macro"} macro={"Macro"} consulta={"Consulta"}/>
@@ -29,6 +32,15 @@ const Macro = () => {
 };
 
 const Card = ({ fazenda, onCardClick }) => {
+  const { state } = useLocation();
+  const car = state?.car; 
+  const machoRebanho = state?.machoRebanho
+  // const {car,machoRebanho} = location.state;
+  useEffect(()=>{
+    console.log(car,machoRebanho)
+  },[])
+ 
+
   return (
     <div className="card" onClick={onCardClick}>
       <div className="card-header">
@@ -39,6 +51,7 @@ const Card = ({ fazenda, onCardClick }) => {
         <span>Tamanho: {fazenda.tamanho}</span>
         <span>Porte: {fazenda.porte}</span>
         <span className={`status-badge ${getStatusClass(fazenda.status)}`}>{fazenda.status}</span>
+      
       </div>
     </div>
   );

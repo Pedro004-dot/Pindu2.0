@@ -1,29 +1,13 @@
-import { Route, Navigate } from "react-router-dom";
-import Login from "../../pages/login/Login";
+import { Navigate, Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function PrivateRoute({ element, path }){
-    const isAuthenticated = localStorage.getItem('authenticatedUser') !== null;
+PrivateRoute.propTypes = {
+    isAuthenticated : PropTypes.string, 
+  }
+  
 
-    
-    return isAuthenticated ? <Route path={path} element={element} /> : <Navigate to="/login" />;
+function PrivateRoute({ isAuthenticated }) {
+ return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 }
 
-
-// import { Route } from 'react-router-dom';
-// import { redirect } from 'react-router-dom';
-
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//  <Route
-//     {...rest}
-//     render={(props) =>
-      
-//       true ? (
-//         <Component {...props} />
-//       ) : (
-//         <redirect to="/login" />
-//       )
-//     }
-//  />
-// );
-
-// export default PrivateRoute;
+export default PrivateRoute;
