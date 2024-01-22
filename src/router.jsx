@@ -2,7 +2,7 @@
 // import { BrowserRouter, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Macro from "./pages/macro/macro";
-import Micro from "./pages/micro/micro";
+// import Micro from "./pages/micro/micro";
 import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
 // import PrivateRoute from "./components/privateRoute/privateRoute";
@@ -23,11 +23,12 @@ import { createBrowserRouter } from "react-router-dom";
          {
             path:"/consulta",
             element:<Consulta/> ,
-         },
-         {
-            path:"/fazenda/:fazendaId",
-            element:<Micro/> ,
-         },
+         }
+         // ,{
+         //       path:"fazendas/:fazendasId",
+         //       element:<Micro/>      
+         // }
+         
 
          // {
          //    path: "/fazenda/:fazendaId", 
