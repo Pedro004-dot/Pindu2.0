@@ -16,8 +16,19 @@ const Macro = () => {
     <div className='container-macro'>
       <h1>Consulta da Base de Fornecedores</h1>
       <div className="cards-container">
-       
-        {/* {fazendas.map(fazenda => <Card key={fazenda.id} fazenda={fazenda} onCardClick={() => handleCardClick(fazenda.id)} />)} */}
+      <div>
+        {fazendas ? fazendas.map((fazenda)=> (
+         <Card
+                key={fazenda.id}
+                car={fazenda.car}
+                machoRebanho={fazenda.machoRebanho}
+                femeaRebanho={fazenda.femeaRebanho}                
+         />
+ 
+ )) : <h1>Nao tem fazendas registradas</h1>}
+      </div>
+   
+
       </div>
     </div>
     </div>

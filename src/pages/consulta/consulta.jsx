@@ -3,21 +3,20 @@ import InputText from "../../components/input-text/inputText";
 import './consulta.css'
 import Header from "../../components/header/header";
 import { useState } from "react";
+import { useContext } from "react";
 import FazendaContext from "../../context/fazendaContext";
-import Card from "../../components/card/card";
+
+
 
 export default function Consulta(){
   
-  const [fazendas,setFazendas] = useState(()=>{
-    const storedFazendas = localStorage.getItem("Pindu_lib")
-    if(!storedFazendas) return []
-    return JSON.parse(storedFazendas)
-  })
+  const fazendas = useContext(FazendaContext)
+  const setFazendas = useContext
   // const [fazendas,setFazendas] = useState([])
   const [car,setCar] = useState('')
   const [machoRebanho,setMachoRebanho] = useState()
   const [femeaRebanho,setFemeaRebanho] = useState()
-  
+
   const addFazenda = ({car,machoRebanho,femeaRebanho})=>{
     const id = Math.floor(Math.random() *10000)
     const fazenda = {id,car , machoRebanho, femeaRebanho}
@@ -28,6 +27,7 @@ export default function Consulta(){
      return newState
     })
   }
+ 
   // funcao de remover fazenda 
   // const removeFazenda = (id)=>{
     
@@ -41,6 +41,7 @@ export default function Consulta(){
   const handleSubmit= (ev)=>{
     ev.preventDefault()
     addFazenda({car,machoRebanho,femeaRebanho})
+
     setCar('')
     setFemeaRebanho()
     setMachoRebanho()
@@ -48,7 +49,7 @@ export default function Consulta(){
   }
   
     return(
-      <FazendaContext.Provider value={fazendas}>
+      
         <div className='container'>
               <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"}/>
               <div className='content'>
@@ -66,24 +67,20 @@ export default function Consulta(){
                  <InputText type={'text'} text={'Quantidade de macho'} value={machoRebanho} onChange={e=> setMachoRebanho(e.target.value)} required={true}/>
                  <InputText type={'text'} text={'Quantidade de femea'} value={femeaRebanho} onChange={e=> setFemeaRebanho(e.target.value)} required={true}/>
                  <Button onClick={handleSubmit} text={'Solicitar analise'}/>
+                 {console.log(fazendas)}
                 </div> 
-                <div className='fazendas'>
-       {fazendas ? fazendas.map((fazenda)=> (
-        <Card
-                      key={fazenda.id}
-                      car={fazenda.car}
-                      machoRebanho={fazenda.machoRebanho}
-                      femeaRebanho={fazenda.femeaRebanho}                
-         />
-
-       )) : <h1>Nao tem fazendas registradas</h1>}
-       </div>
+               
              </div>   
           </div>
-      </FazendaContext.Provider>
+    
+      
                        
     )
 }
+
+
+
+
 {/* <form  >
 <InputText type='text' text='CAR' required={true}  onChange={(e) => setCar(e.target.value)} value={car}/>
 <InputText  name="machoRebanho" type='number' text='Quantidade de fêmea' required={true}  onChange={(e) => setMachoRebanho(e.target.value)} value={machoRebanho}/>
@@ -146,3 +143,14 @@ export default function Consulta(){
 // {/* <InputText id='document' type='file' text=''  placeHolder={"DOcumento de venda"} required={false}/> */}
 // {/* <Button onClick={handleSubmit} text={'Solicitar Análise'}  />  
 // </form> */} 
+{/* <div className='fazendas'>
+{fazendas ? fazendas.map((fazenda)=> (
+ <Card
+               key={fazenda.id}
+               car={fazenda.car}
+               machoRebanho={fazenda.machoRebanho}
+               femeaRebanho={fazenda.femeaRebanho}                
+  />
+
+)) : <h1>Nao tem fazendas registradas</h1>}
+</div> */}
