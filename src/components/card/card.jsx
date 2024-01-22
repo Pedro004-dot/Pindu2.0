@@ -10,6 +10,7 @@ export default function Card({ car,machoRebanho,femeaRebanho }){
    
 
     return (
+      <div className = "card-container">
       <div className="card" >
         <div className="card-header">
           <span className="fazenda-nome">{car}</span>
@@ -20,6 +21,7 @@ export default function Card({ car,machoRebanho,femeaRebanho }){
           <span>Porte: {machoRebanho+ femeaRebanho}</span>
           {/* <span className={`status-badge ${getStatusClass(fazenda.status)}`}>{fazenda.status}</span> */}
         </div>
+      </div>
       </div>
     );
   }

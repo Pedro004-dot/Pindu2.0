@@ -30,7 +30,7 @@ export default function Consulta(){
  
   // funcao de remover fazenda 
   // const removeFazenda = (id)=>{
-    
+
   //   setFazendas(state => {
   //     const newState = state.filter(fazenda => fazenda.id !== id)
   //     localStorage.setItem("Pindu_lib", JSON.stringify(newState))
