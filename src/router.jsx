@@ -1,16 +1,9 @@
-
-// import { BrowserRouter, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Macro from "./pages/macro/macro";
-// import Micro from "./pages/micro/micro";
 import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
-// import PrivateRoute from "./components/privateRoute/privateRoute";
+import Micro from "./pages/micro/micro";
 
-// import RootLayout from "./pages/rootLayout";
-// import ProductBoundary from "./pages/error/ProductBondary";
-
-// const isAuthenticated = localStorage.getItem('authenticatedUser');
     const router = createBrowserRouter(
       [
        {
@@ -24,10 +17,10 @@ import { createBrowserRouter } from "react-router-dom";
             path:"/consulta",
             element:<Consulta/> ,
          }
-         // ,{
-         //       path:"fazendas/:fazendasId",
-         //       element:<Micro/>      
-         // }
+         ,{
+               path:"fazendas/:fazendasId",
+               element:<Micro/>      
+         }
          
 
          // {

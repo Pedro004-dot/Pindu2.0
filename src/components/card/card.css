@@ -1,11 +1,11 @@
 .card-container{
 }
 .card {
+    border-color: #ff914d;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: calc(33.333% - 20px);
     cursor: pointer;
     transition: background-color 0.2s;
     transition: transform 0.3s;

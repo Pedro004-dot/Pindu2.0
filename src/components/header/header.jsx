@@ -40,7 +40,7 @@ export default function Header({tela,macro,consulta}){
               <img/>
             </div>
             <div className='direita'>
-            <Link className='link' id='macro' style={macroEstilo} to={"/macro"}> {macro}</Link>
+            {/* <Link className='link' id='macro' style={macroEstilo} to={"/macro"}> {macro}</Link> */}
             <Link className='link' id='consulta' style={consultaEstilo} to={"/consulta"} >{consulta}</Link>
             </div>
        </div>

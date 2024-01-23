@@ -10,6 +10,18 @@
    justify-content: center;
    align-items: center;
    margin-top: 15%;
+   flex-direction: column;
+}
+.superior{
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5%;
 }
 .icon{
     background-color: #E84752;
@@ -26,7 +38,7 @@
     width: 60%;
     margin: 5%;
 }
-.login{
+.form{
  margin-left: 15px;
  display: flex;
  flex-direction: column;

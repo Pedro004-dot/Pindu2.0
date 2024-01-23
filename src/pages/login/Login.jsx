@@ -26,7 +26,7 @@ export default function Login(){
     e.preventDefault();
     if (user === 'adm' && password === 'adm') {
       localStorage.setItem('authenticatedUser', JSON.stringify({ user, password }));
-      navigate('/macro');
+      navigate('/consulta');
     } else {     
       console.log('nao autenticado')
       alert('Usuário ou senha incorretos!');
@@ -39,7 +39,7 @@ return(
     <Header />
        <div className='content'>
          <div className='icon' >
-           <img src='src/assets/user.png'/>
+           <img src='src/assets/people.png'/>
            <h3> Acesso ao usuario</h3>
          </div>
           <div className='login' >

@@ -1,5 +1,6 @@
-// // import Header from "../../components/header/header";
-// import { useEffect } from 'react';
+export default function Micro(){
+  
+}
 // import Header from '../../components/header/header';
 // import './micro.css'
 // // import { useParams } from "react-router-dom";
@@ -20,10 +21,8 @@
 //    detalheScore: PropTypes.string,
 //    mapaUrl: PropTypes.string,
 // }
-//  const Micro= ({id,name,produtor, localizacao,areaTotal,vegetacaoNativa,pastagem,producaoAnual,captura,emissao,score,detalheScore,mapaUrl}) => {
-//   useEffect(()=>{
-//     id = id + 1
-//   },[])
+//  const Micro= ({name,produtor, localizacao,areaTotal,vegetacaoNativa,pastagem,producaoAnual,captura,emissao,score,detalheScore,mapaUrl}) => {
+  
 //     return (
 //     <div>
 //     <Header tela={"Micro"} macro={"Macro"} consulta={"Consulta"}/>
