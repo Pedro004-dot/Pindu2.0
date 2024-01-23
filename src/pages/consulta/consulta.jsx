@@ -29,8 +29,9 @@ export default function Consulta(){
      })
    }
    function handleCardClick() {
-    navigate('/consulta');    
+    navigate('/micro');    
 }
+
   // funcao de remover fazenda 
   // const removeFazenda = (id)=>{
 
@@ -50,7 +51,7 @@ export default function Consulta(){
 
   }
 const ativo = [
-    { id: 1, car: '12345', machoRebanho: 50, femeaRebanho: 60, status: 'ANALISE PROCESSADA' },
+    { id: 1, car: '01', machoRebanho: 50, femeaRebanho: 60, status: 'ANALISE PROCESSADA' },
     // ... outras fazendas
 ];
     return(
@@ -75,7 +76,18 @@ const ativo = [
                    <Button onClick={handleSubmit}  submit={'submit'} text={'Solicitar analise'}/>
                  </div> 
                 </div>
-                
+                <div onClick={handleCardClick}>
+            {ativo.map(fazenda => (
+                <Card 
+                onCardClick={handleCardClick}
+                key={fazenda.id}
+                    car={fazenda.car}
+                    machoRebanho={fazenda.machoRebanho}
+                    femeaRebanho={fazenda.femeaRebanho}
+                    status={fazenda.status}
+                />
+            ))}
+        </div>
                 <div className="cards">
                     {fazendas ? fazendas.map((fazenda)=> (
                    <Card
@@ -90,18 +102,7 @@ const ativo = [
    
                     )) : <h1>Nao tem fazendas registradas</h1>}
                   </div>
-                  <div onClick={handleCardClick}>
-            {ativo.map(fazenda => (
-                <Card 
-                onCardClick={handleCardClick}
-                key={fazenda.id}
-                    car={fazenda.car}
-                    machoRebanho={fazenda.machoRebanho}
-                    femeaRebanho={fazenda.femeaRebanho}
-                    status={fazenda.status}
-                />
-            ))}
-        </div>
+
                
               </div>   
          </div>
