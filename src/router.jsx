@@ -18,7 +18,7 @@ import Micro from "./pages/micro/micro";
             element:<Consulta/> ,
          }
          ,{
-               path:"fazendas/:fazendasId",
+               path:"/micro",
                element:<Micro/>      
          }
          

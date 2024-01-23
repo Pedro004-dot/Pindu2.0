@@ -7,9 +7,7 @@ import Card from "../../components/card/card";
 import { useNavigate } from "react-router-dom";
 
 export default function Consulta(){
-  const navigate = useNavigate()
- 
-  
+  const navigate = useNavigate()  
   // const [fazendas,setFazendas] = useState([])
   const [car,setCar] = useState('')
   const [machoRebanho,setMachoRebanho] = useState()
@@ -30,7 +28,9 @@ export default function Consulta(){
       return newState
      })
    }
- 
+   function handleCardClick() {
+    navigate('/consulta');    
+}
   // funcao de remover fazenda 
   // const removeFazenda = (id)=>{
 
@@ -49,7 +49,10 @@ export default function Consulta(){
     setMachoRebanho()
 
   }
-  
+const ativo = [
+    { id: 1, car: '12345', machoRebanho: 50, femeaRebanho: 60, status: 'ANALISE PROCESSADA' },
+    // ... outras fazendas
+];
     return(
       
         <div className='container'>
@@ -72,6 +75,7 @@ export default function Consulta(){
                    <Button onClick={handleSubmit}  submit={'submit'} text={'Solicitar analise'}/>
                  </div> 
                 </div>
+                
                 <div className="cards">
                     {fazendas ? fazendas.map((fazenda)=> (
                    <Card
@@ -80,11 +84,24 @@ export default function Consulta(){
                       machoRebanho={fazenda.machoRebanho}
                       femeaRebanho={fazenda.femeaRebanho}
                       status={'EM PROCESSAMENTO'}
-                             
-                    />
+                      />
+
+                    
    
                     )) : <h1>Nao tem fazendas registradas</h1>}
                   </div>
+                  <div onClick={handleCardClick}>
+            {ativo.map(fazenda => (
+                <Card 
+                onCardClick={handleCardClick}
+                key={fazenda.id}
+                    car={fazenda.car}
+                    machoRebanho={fazenda.machoRebanho}
+                    femeaRebanho={fazenda.femeaRebanho}
+                    status={fazenda.status}
+                />
+            ))}
+        </div>
                
               </div>   
          </div>
