@@ -5,6 +5,7 @@ const fazendaSchema = new Schema({
   car :{
     type: String,
     required : true,
+    unique:true
   },
   quantityMale: {
     type: Number,
@@ -45,8 +46,12 @@ const fazendaSchema = new Schema({
   },
   score:{
     type: Number
+  },
+  createdAt :{
+        type: Date,
+        default: Date.now
   }
-},{timestamps: true})
+})
 
 const Fazenda = mongoose.model("Fazenda", fazendaSchema);
 

@@ -1,7 +1,8 @@
 const express = require("express")
 const cors = require("cors")
 const coon = require("./db/coon")
-const AuthController = require("./controllers/AuthController")
+const UserController = require("./controllers/UserController")
+const FazendaController = require("./controllers/FazendaController")
 
 
 const app = express()
@@ -17,7 +18,8 @@ coon()
 //Routes
 
 
-app.use("/auth",AuthController)
+app.use("/auth",UserController)
+app.use("/fazenda",FazendaController)
 
 app.listen(3000, function(){
     console.log('Servidor online')
