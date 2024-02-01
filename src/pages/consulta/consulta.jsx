@@ -52,7 +52,6 @@ export default function Consulta(){
   }
 const ativo = [
     { id: 1, car: '01', machoRebanho: 50, femeaRebanho: 60, status: 'ANALISE PROCESSADA' },
-    // ... outras fazendas
 ];
     return(
       
@@ -60,10 +59,10 @@ const ativo = [
               <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"}/>
               <div className='content'>
                 <div className="superior">
-                <div className='icon' >
+                <div className='icon'>
                   <img src='src/assets/search.png'/>
                 </div>
-                 <div className='form' >
+                 <div className='form'>
                    <p>
                    Consulte os dados da propriedade inserindo CAR <br /> do fornecedor e   dados do rebanho comprado.
                    <br/>
