@@ -1,57 +1,44 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { authenticate } from '../../../backend/services/authService';
+import Button from '../../components/button/button';
+import InputText from '../../components/input-text/inputText';
+import Header from '../../components/header/header';
+import './Login.css';
 
-
-
-
-
-
-import Button from '../../components/button/button'
-import InputText from '../../components/input-text/inputText'
-import './Login.css'
-import Header from '../../components/header/header'
-import { useState } from 'react';
-// import Authenticate from '../../components/autenticador/authenticate'
-// import Macro from "../macro/macro";
-import {useNavigate} from 'react-router-dom'
-
-
-
-
-export default function Login(){
+export default function Login() {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (user === 'adm' && password === 'adm') {
-      localStorage.setItem('authenticatedUser', JSON.stringify({ user, password }));
-      navigate('/consulta');
-    } else {     
-      console.log('nao autenticado')
+    try {
+      const authData = await authenticate(user, password);
+      localStorage.setItem('userToken', authData.token); 
+      navigate('/consulta'); 
+    } catch (error) {
+      console.error('Erro de autenticação:', error.message);
       alert('Usuário ou senha incorretos!');
     }
-};
+  };
 
-return(
-
+  return (
     <div className='container'>
-    <Header />
-       <div className='content'>
-         <div className='icon' >
-           <img src='src/assets/people.png'/>
-           <h3> Acesso ao usuario</h3>
-         </div>
-          <div className='login' >
-            <form onSubmit={handleSubmit}>
-              <InputText id="user" type="text" text="User" value={user} onChange={(e) => setUser(e.target.value)} required={true} />
-              <InputText id="senha" type="password" text="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
-              <Button submit={'submit'} text={"Login"}/>
-           </form>           
-          </div>
-       </div>
-      
+      <Header />
+      <div className='content'>
+        <div className='icon'>
+          <img src='src/assets/people.png' alt='Ícone de Login'/>
+          <h3> Acesso ao usuario</h3>
+        </div>
+        <div className='login'>
+          <form onSubmit={handleSubmit}>
+            <InputText id="user" type="text" text="User" value={user} onChange={(e) => setUser(e.target.value)} required={true} />
+            <InputText id="senha" type="password" text="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+            <Button submit={'submit'} text={"Login"}/>
+          </form>           
+        </div>
+      </div>
     </div>
-)
+  );
 }
-// // text={isAuthenticated ? "autenticado" : 'Login'
