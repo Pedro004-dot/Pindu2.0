@@ -1,0 +1,90 @@
+.container-macro {
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: calc(33.333% - 20px);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  transition: transform 0.3s;
+  transition: transform 0.1s;
+  transition: border 0.3s;
+
+
+}
+.card:active {
+  transform: scale(0.98);
+  border: 2px solid #E84752;
+
+}
+.card:hover {
+transform: scale(1.05);
+}
+.card:hover .card-header {
+color: #E84752;
+}
+
+.card-header {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fazenda-nome {
+  font-weight: bold;
+}
+
+.pindu-badge {
+  padding: 5px 8px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.pindu-D {
+  background-color: #e57373; 
+}
+
+.pindu-C {
+  background-color: #ff914d; 
+}
+.pindu-B {
+  background-color: #ffde59; 
+}
+.pindu-A {
+  background-color: #00bf64; 
+}
+.status-badge {
+  padding: 5px 8px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+.processing {
+  background-color: #e57373; 
+}
+
+.processed {
+  background-color: #81c784; 
+}
+  

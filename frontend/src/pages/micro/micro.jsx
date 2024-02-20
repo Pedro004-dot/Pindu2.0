@@ -77,7 +77,7 @@ export default function Micro(){
     </div>
     </div>
   );
-};
+}
 
 // import './micro.css'
 // // import { useParams } from "react-router-dom";

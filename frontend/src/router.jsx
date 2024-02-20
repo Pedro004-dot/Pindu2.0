@@ -3,6 +3,7 @@ import Macro from "./pages/macro/macro";
 import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
 import Micro from "./pages/micro/micro";
+import { PrivateRoute } from "./components/privateRoute/privateRoute";
 
     const router = createBrowserRouter(
       [
@@ -11,23 +12,25 @@ import Micro from "./pages/micro/micro";
          element: <Login/> ,
          },{
             path:"/macro",
-            element: <Macro/>,
+            element: <PrivateRoute>
+               <Macro/>
+            </PrivateRoute> ,
          },
          {
             path:"/consulta",
-            element:<Consulta/> ,
+            element:
+               <PrivateRoute>
+                  <Consulta/> 
+               </PrivateRoute>
+            ,
          }
          ,{
                path:"/micro",
-               element:<Micro/>      
+               element:
+                  <PrivateRoute>
+                     <Micro/> 
+                  </PrivateRoute>                   
          }
-         
-
-         // {
-         //    path: "/fazenda/:fazendaId", 
-         //    element: <PrivateRoute><Fazenda/></PrivateRoute>,
-         //  },
-
         
     ]
     )

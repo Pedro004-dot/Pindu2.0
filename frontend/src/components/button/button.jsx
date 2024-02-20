@@ -3,7 +3,7 @@ import './button.css'
 
 Button.propTypes = {
   text : PropTypes.string,
-  onClick: PropTypes.func,
+  onClick: PropTypes.object,
   submit : PropTypes.string
 }
 
