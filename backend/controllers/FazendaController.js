@@ -4,22 +4,50 @@ const FazendaModel = require("../models/fazenda");
 const router = express.Router();
 
 
-router.post("/criar", async(req,res)=>{
-    const {car} = req.body;
+// router.post("/criar", async(req,res)=>{
+    
+//     const {car} = req.body;
 
-    if (await FazendaModel.findOne({car})){
+//     if (await FazendaModel.findOne({car})){
+//         return res.status(200).json({
+//             message: "Fazenda já existe"
+//         })
+//     }
+
+//     const fazenda = await FazendaModel.create(req.body)
+
+//     return res.status(200).json({
+//         fazenda,
+//         message: "Fazenda criada"
+//     })
+// })
+router.post("/criar", async (req, res) => {
+    try {
+      const { car } = req.body;
+  
+      // Verifica se a fazenda já existe no banco de dados
+      const existingFazenda = await FazendaModel.findOne({ car });
+  
+      if (existingFazenda) {
         return res.status(200).json({
-            message: "Fazenda já existe"
-        })
-    }
-
-    const fazenda = await FazendaModel.create(req.body)
-
-    return res.status(400).json({
+          message: "Fazenda já existe",
+          fazenda: existingFazenda,
+        });
+      }
+  
+      // Se a fazenda não existe, cria uma nova
+      const fazenda = await FazendaModel.create(req.body);
+  
+      return res.status(200).json({
         fazenda,
-        message: "Fazenda criada"
-    })
-})
+        message: "Fazenda criada",
+      });
+    } catch (error) {
+      console.error(error.message);
+      return res.status(500).json({ message: "Erro interno do servidor" });
+    }
+  });
+  
 
 router.get("/consultar", async(req,res)=>{
     try{

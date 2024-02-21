@@ -2,7 +2,8 @@ import Button from "../../components/button/button";
 import InputText from "../../components/input-text/inputText";
 import './consulta.css'
 import Header from "../../components/header/header";
-import { useState } from "react";
+import { useState} from "react";
+import { api } from "../../services/service";
 // import { useNavigate } from "react-router-dom";
 
 export default function Consulta(){
@@ -11,12 +12,16 @@ export default function Consulta(){
   const [machoRebanho,setMachoRebanho] = useState()
   const [femeaRebanho,setFemeaRebanho] = useState()
   
-  const handleSubmit= (ev)=>{
+   const handleSubmit= async(ev)=>{
     ev.preventDefault()
-    // addFazenda({car,machoRebanho,femeaRebanho})
-    setCar('')
-    setFemeaRebanho()
-    setMachoRebanho()
+    if (!( car || machoRebanho || femeaRebanho) )return;
+
+    const response = await api.post("fazenda/criar",{
+      car : car,
+      quantityMale : machoRebanho,
+      quantityFemale : femeaRebanho
+    })
+    console.log(response.data.fazendas)
 
   }
 
@@ -36,10 +41,12 @@ export default function Consulta(){
                    <br/>
                    <br/>
                    </p>
-                   <InputText type={'text'} text={'CAR'} value={car} onChange={e=> setCar(e.target.value)} required={true}/>
-                   <InputText type={'text'} text={'Quantidade de macho'} value={machoRebanho} onChange={e=> setMachoRebanho(e.target.value)} required={true}/>
-                   <InputText type={'text'} text={'Quantidade de femea'} value={femeaRebanho} onChange={e=> setFemeaRebanho(e.target.value)} required={true}/>
-                   <Button onClick={handleSubmit}  submit={'submit'} text={'Solicitar analise'}/>
+                   <form onSubmit={handleSubmit}>
+                    <InputText type={'text'} text={'CAR'} value={car} onChange={e=> setCar(e.target.value)} required={true}/>
+                    <InputText type={'text'} text={'Quantidade de macho'} value={machoRebanho} onChange={e=> setMachoRebanho(e.target.value)} required={true}/>
+                    <InputText type={'text'} text={'Quantidade de femea'} value={femeaRebanho} onChange={e=> setFemeaRebanho(e.target.value)} required={true}/>
+                    <Button  submit={'submit'} text={'Solicitar analise'}/>
+                   </form>
                  </div> 
                 </div>            
               </div>   

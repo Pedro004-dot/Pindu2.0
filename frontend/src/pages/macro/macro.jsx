@@ -20,10 +20,13 @@ export default function Macro () {
    try {
     const response = await api.get("fazenda/consultar")
     setFazendas(response.data.fazendas)
+
+    
     // console.log(response.data)
    } catch (error) {
     console.log(error.message)
    }
+
   }
 return (
      <div> 
