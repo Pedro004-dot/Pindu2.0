@@ -55,7 +55,7 @@ export default function Consulta(){
               <div className='content'>
                 <div className="superior">
                 <div className='icon'>
-                  <img src='src/assets/search.png'/>
+                  <img src='frontend/src/assets/search.png'/>
                 </div>
                  <div className='form'>
                    <p>
