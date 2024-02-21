@@ -22,7 +22,7 @@ export default function Login(){
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-      const response = await api.post("/authenticate",{
+      const response = await api.post("auth/authenticate",{
         name: user,
         password: password
 

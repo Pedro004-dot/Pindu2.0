@@ -1,14 +1,14 @@
 
 import './macro.css'; 
 import Header from "../../components/header/header";
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import {api}from '../../services/service'
 import { useEffect, useState } from 'react';
 
 
 
-const Macro = () => {
-  const navigate = useNavigate();
+export default function Macro () {
+  // const navigate = useNavigate();
   const [fazendas,setFazendas] = useState([])
 
   useEffect(()=>{
@@ -16,28 +16,38 @@ const Macro = () => {
   },[])
 
   async function loadFazendas(){
-    const response = await api.get("/encontrar")
-    setFazendas(response.data)
+
+   try {
+    const response = await api.get("fazenda/consultar")
+    setFazendas(response.data.fazendas)
+    // console.log(response.data)
+   } catch (error) {
+    console.log(error.message)
+   }
   }
-
-  const handleCardClick = (fazendaId) => {
-    navigate(`/fazenda/${fazendaId}`);
-  };
-
 return (
      <div> 
        <Header tela={"Macro"} macro={"Macro"} consulta={"Consulta"}/>
         <div className='container-macro'>
           <h1>Consulta da Base de Fornecedores</h1>
           <div className="cards-container">
-          {fazendas.map(()=>(
-            <h1></h1>
-          ))}
+          {console.log(fazendas)}
+          {fazendas.length > 0 ? (
+              fazendas.map((params) => (
+                <div key={params._id}>
+                      <h1>{params.car}</h1>
+                      <h2>{params.quantityMale}</h2>
+                      <h2>{params.quantityFemale}</h2>
+                </div>
+              ))
+            ) : (
+          <p>Nenhum dado encontrado.</p>
+          )}
            </div>
         </div>
      </div>
 );
-};
+}
 
 // import './macro.css'; 
 // import Header from "../../components/header/header";
