@@ -25,7 +25,7 @@ import { PrivateRoute } from "./components/privateRoute/privateRoute";
             ,
          }
          ,{
-               path:"/micro",
+               path:"/macro/:params_Id",
                element:
                   <PrivateRoute>
                      <Micro/> 

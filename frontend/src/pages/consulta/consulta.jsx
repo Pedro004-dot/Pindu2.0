@@ -4,6 +4,7 @@ import './consulta.css'
 import Header from "../../components/header/header";
 import { useState} from "react";
 import { api } from "../../services/service";
+import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
 export default function Consulta(){
@@ -14,14 +15,22 @@ export default function Consulta(){
   
    const handleSubmit= async(ev)=>{
     ev.preventDefault()
-    if (!( car || machoRebanho || femeaRebanho) )return;
-
-    const response = await api.post("fazenda/criar",{
+    if (!( car || machoRebanho || femeaRebanho) ){
+      toast.error("Não foi possivel cadastrar a fazenda")
+    }
+    try {
+      const response = await api.post("fazenda/criar",{
       car : car,
       quantityMale : machoRebanho,
       quantityFemale : femeaRebanho
     })
+    toast.success("Fazenda cadastrada com sucesso")
     console.log(response.data.fazendas)
+    } catch (error) {
+       console.log(error)
+       toast.error("Não foi possivel cadastrar a fazenda")
+    }
+    
 
   }
 

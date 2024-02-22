@@ -57,6 +57,9 @@
   font-size: 3em; 
   font-weight: bold;
   margin: 0 20px;
+  p{
+    font-size: 15px;
+  }
 }
 
 .balance-caption {
@@ -102,6 +105,9 @@
 
   .balance-value {
     font-size: 2em; 
+    p{
+      font-size: 15px;
+    }
   }
 
   .score {

@@ -1,9 +1,6 @@
 
 import './macro.css'; 
 import Header from "../../components/header/header";
-// import { useNavigate } from 'react-router-dom'
-import {api}from '../../services/service'
-import { useEffect, useState } from 'react';
 import Card from '../../components/card/card.jsx';
 
 

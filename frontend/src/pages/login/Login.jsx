@@ -9,6 +9,7 @@ import Header from '../../components/header/header'
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import {api}from '../../services/service'
+import { toast } from 'react-toastify';
 
 
 
@@ -27,13 +28,13 @@ export default function Login(){
         password: password
 
       })
-
+      toast.success("Usuario cadastrado com sucesso")
       setData(response.data)
       // localStorage.setItem('token',JSON.stringify(data.token))
       console.log(data)
       console.log("Usuario verificado")
       navigate('/consulta'); 
-     }catch(error){console.log("Usuario invalido")}
+     }catch(error){toast.error("Usuario invalido")}
 
     
   }
