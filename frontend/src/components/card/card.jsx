@@ -1,41 +1,61 @@
 import PropTypes from 'prop-types';
 import './card.css'
 import './card'
-Card.propTypes = {
-    car : PropTypes.string,
-    machoRebanho : PropTypes.number,
-    femeaRebanho : PropTypes.number,
-    status : PropTypes.string,
-    onCardClick: PropTypes.func
-    
-  }
-export default function Card({ car,machoRebanho,femeaRebanho,status}){
+import {api}from '../../services/service'
+
+import { useEffect, useState } from 'react';
+
+export default function Card({fazenda, onCardClick}){
+   const [fazendas, setFazendas] = useState([])
+   const handleCardClick = (fazendaId) => {
+     navigate(`/fazenda/${fazendaId}`);
+   };
+   useEffect(()=>{
+    loadFazendas()
+   },[])
+
+   async function loadFazendas(){
+    try{
+      const response = await api.get("fazenda/consultar")
+      setFazendas(response.data.fazendas)
+
+    }catch (error){
+      console.log(error.message)
+    }
+   }
    
 
     return (
-      <div className = "card-container">
-      <div className="card" >
-        <div className="card-header" >
-          <span className="fazenda-nome" > Fazenda: {car}</span>
-          {/* <span className={`pindu-badge pindu-${fazenda.pindu}`}>{fazenda.pindu}</span> */}
-        </div>
-        <div className="card-body">
-          {/* <span>Tamanho: {fazenda.tamanho}</span> */}
-          <span>Porte: {parseInt(machoRebanho) + parseInt(femeaRebanho)}</span>
-          <span className={`status-badge ${getStatusClass(status)}`}>{status}</span>
-        </div>
-      </div>
-      </div>
-    );
-  }
+        <div>
+          <div className="cards-container">
+            {console.log(fazendas)}
+          {fazendas.length > 0 ? (
+              fazendas.map((params) => (
+                <div key={params._id} className="card" onClick={onCardClick}>
+                    <div className='card-header'>
+                      <div className="fazenda-nome">{params.car}</div>
+                    </div>  
+                <div className='card-body'>  
+                  < div>Porte macho: {params.quantityMale}</div>
+                  <div>Porte femea: {params.quantityFemale }</div>
+                </div>        
+                </div>
+              ))
+            ) : (
+          <p>Nenhum dado encontrado.</p>
+          )}
 
-  const getStatusClass = (status) => {
-    switch (status) {
-      case 'EM PROCESSAMENTO':
-        return 'processing';
-      case 'ANALISE PROCESSADA':
-        return 'processed';
-      default:
-        return '';
-    }
-  };
+           </div>
+        </div> 
+
+    )
+  // const getStatusClass = (status) => {
+  //   switch (status) {
+  //     case 'EM PROCESSAMENTO':
+  //       return 'processing';
+  //     case 'ANALISE PROCESSADA':
+  //       return 'processed';
+  //     default:
+  //       return '';
+  //   }
+   }
