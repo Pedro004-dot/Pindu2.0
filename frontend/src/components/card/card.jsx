@@ -36,7 +36,8 @@ export default function Card({params}){
               fazendas.map((params) => (
                 <div 
                 key={params._id}
-                 className="card"               
+                 className="card"  
+                 onClick={()=> navigate(`/macro/${params._id}`)}             
                  >
                     <div className='card-header' >
                       <div className="fazenda-nome">{params.car}</div>
@@ -44,7 +45,7 @@ export default function Card({params}){
                 <div className='card-body'>  
                   < div>Porte macho: {params.quantityMale}</div>
                   <div>Porte femea: {params.quantityFemale }</div>
-                  <Link to={ `/macro/${params._id}`} > <Button text={"Clique aqui "}/></Link>
+                  
                 </div>        
                 </div>
               ))
