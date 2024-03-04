@@ -5,6 +5,7 @@ const UserController = require("./controllers/UserController")
 const FazendaController = require("./controllers/FazendaController")
 
 
+
 const app = express()
 
 app.use(cors());
@@ -20,6 +21,7 @@ coon()
 
 app.use("/auth",UserController)
 app.use("/fazenda",FazendaController)
+
 
 app.listen(3000, function(){
     console.log('Servidor online')

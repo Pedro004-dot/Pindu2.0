@@ -4,6 +4,8 @@ import Consulta from "./pages/consulta/consulta";
 import { createBrowserRouter } from "react-router-dom";
 import Micro from "./pages/micro/micro";
 import { PrivateRoute } from "./components/privateRoute/privateRoute";
+import Adm from "./pages/adm/adm";
+import Register from "./pages/register/register";
 
     const router = createBrowserRouter(
       [
@@ -30,6 +32,17 @@ import { PrivateRoute } from "./components/privateRoute/privateRoute";
                   <PrivateRoute>
                      <Micro/> 
                   </PrivateRoute>                   
+         },{
+            path: "/adm",
+            element : <PrivateRoute>
+               <Adm/>
+            </PrivateRoute>
+         }
+         ,{
+            path: "/register",
+            element : <PrivateRoute>
+               <Register/>
+            </PrivateRoute>
          }
         
     ]

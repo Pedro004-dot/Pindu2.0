@@ -37,7 +37,7 @@ export default function Consulta(){
     return(
       
         <div className='container'>
-              <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"}/>
+              <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"} ADM={"ADM"} />
               <div className='content'>
                 <div className="superior">
                 <div className='icon'>

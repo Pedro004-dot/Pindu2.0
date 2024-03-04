@@ -28,15 +28,11 @@ export default function Login(){
         password: password
 
       })
-      toast.success("Usuario cadastrado com sucesso")
+      toast.success("Usuario logado com sucesso")
       setData(response.data)
       // localStorage.setItem('token',JSON.stringify(data.token))
-      console.log(data)
-      console.log("Usuario verificado")
       navigate('/consulta'); 
-     }catch(error){toast.error("Usuario invalido")}
-
-    
+     }catch(error){toast.error("Usuario invalido")}   
   }
   
 
@@ -44,7 +40,7 @@ export default function Login(){
 return(
 
     <div className='container'>
-    <Header />
+    <Header tela={"Login"} />
        <div className='content'>
          <div className='icon' >
            <img src='frontend/src/assets/people.png'/>
@@ -54,10 +50,11 @@ return(
             <form onSubmit={handleSubmit}>
               <InputText id="user" type="text" text="User" value={user} onChange={(e) => setUser(e.target.value)} required={true} />
               <InputText id="senha" type="password" text="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
-              <Button submit={'submit'} text={"Login"}/>
-             
+              <Button submit={'submit'} text={"Login"}/>  
            </form>
-            
+            <div>
+            <p>Deseja criar uma conta? <span onClick={()=> navigate("/register")} >Clique aqui</span></p>
+            </div>
           </div>
        </div>
       

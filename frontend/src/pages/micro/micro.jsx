@@ -12,7 +12,6 @@ export default function Micro(){
     async function findFazenda(){
       try{
         const response = await api.get(`fazenda/consultar/${params_Id}`)
-        console.log(response.data.fazenda)
         setFazenda(response.data.fazenda)
         
       }catch (error){

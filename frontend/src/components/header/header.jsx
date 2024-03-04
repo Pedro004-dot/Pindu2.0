@@ -8,10 +8,11 @@ Header.propTypes = {
    consulta :PropTypes.string,
 
 }
-export default function Header({tela,macro,consulta}){
+export default function Header({tela,macro,consulta,ADM}){
 
     const [macroEstilo,setMacroEstilo]= useState({})
     const [consultaEstilo,setConsultaEstilo]= useState({})
+    const [admEstilo,setAdmEstilo]= useState({})
 
     const handleSubTitle = ()=>{
         if(tela === 'Consulta'){
@@ -21,6 +22,9 @@ export default function Header({tela,macro,consulta}){
         } else if(tela === 'Macro'){
             setConsultaEstilo({})
             return setMacroEstilo({background: 'white', color: '#6B202B'})
+        }else if (tela=== 'Administração'){
+            setAdmEstilo({})
+            return setAdmEstilo({background: 'white', color: '#6B202B'})
         }
     return console.log('Feito')
     }
@@ -40,6 +44,7 @@ export default function Header({tela,macro,consulta}){
               <img/>
             </div>
             <div className='direita'>
+            <Link className='link' id='adm' style={admEstilo} to={"/adm"}> {ADM}</Link>
             <Link className='link' id='macro' style={macroEstilo} to={"/macro"}> {macro}</Link>
             <Link className='link' id='consulta' style={consultaEstilo} to={"/consulta"} >{consulta}</Link>
             </div>
