@@ -25,7 +25,6 @@ export default function Consulta(){
       quantityFemale : femeaRebanho
     })
     toast.success("Fazenda cadastrada com sucesso")
-    console.log(response.data.fazendas)
     } catch (error) {
        console.log(error)
        toast.error("Não foi possivel cadastrar a fazenda")
@@ -35,7 +34,6 @@ export default function Consulta(){
   }
 
     return(
-      
         <div className='container'>
               <Header tela={"Consulta"} macro={"Macro"} consulta={"Consulta"} ADM={"ADM"} />
               <div className='content'>

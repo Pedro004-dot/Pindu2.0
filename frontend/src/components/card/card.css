@@ -21,6 +21,7 @@
 }
 .card:hover {
   transform: scale(1.05);
+  transition-duration: 200;
 }
 .card:hover .card-header {
   color: #E84752;
@@ -36,13 +37,20 @@
   }
   
   .card-body {
-    
     padding: 15px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  
+  .card-left{
+      display: flex;
+      flex-direction: row;
+    }
+    .card-right{
+      position: absolute;
+      right: 80px;
+    }
   .fazenda-nome {
     font-weight: bold;
   }
